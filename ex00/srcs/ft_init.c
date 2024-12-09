@@ -6,7 +6,7 @@
 /*   By: rprasopk <rprasopk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 21:02:38 by rprasopk          #+#    #+#             */
-/*   Updated: 2024/12/09 16:46:00 by rprasopk         ###   ########.fr       */
+/*   Updated: 2024/12/09 19:10:20 by rprasopk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,8 +127,11 @@ int	ft_start(char **dict, char **tab_nbr, int tab_nbr_size, char *zerovalue)
 	i = 0;
 	while (tab_nbr[i])
 	{
+		//  checking if current group of 3 number equal to "000'\0'"
+		//  if equal print 1 space
 		if (i > 0 && ft_strcmp(tab_nbr[i], zerovalue) > 0)
 			ft_putchar(' ');
+
 		ft_print_trio(tab_nbr[i], dict);
 		if (tab_nbr_size - i > 1 && ft_strcmp(tab_nbr[i], zerovalue) > 0)
 		{
@@ -167,8 +170,13 @@ int	ft_init(char *dictpath, char *nbr)
 	//  (user input '0' in)
 	if (ft_strlen(nbr) == 1 && nbr[0] == '0')
 	{
+		//  Function to print the exact value corresponding to the given number (nbr) 
+		//  by searching through the provided dictionary (dict). 
+		//  Returns 1 if a match is found and printed, otherwise returns 0.
 		ft_print_exact_value(nbr, dict);
 		ft_putchar('\n');
+
+		//  free all allocated variable before return
 		ft_free(dict, tab_nbr, nbr, zerovalue);
 		return (1);
 	}

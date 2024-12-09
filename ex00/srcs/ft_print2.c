@@ -6,7 +6,7 @@
 /*   By: rprasopk <rprasopk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 21:11:48 by rprasopk          #+#    #+#             */
-/*   Updated: 2024/12/09 17:24:35 by rprasopk         ###   ########.fr       */
+/*   Updated: 2024/12/09 18:02:56 by rprasopk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,19 @@ int	ft_print_figure(char *nbr, char **dict)
 	i = 0;
 	while (dict[i])
 	{
+
+		//  this function get word from entry [i] in dictionary
+		//  example. 9: nine
+		//			 this function gonna return "nine'\0'"
 		dict_word = ft_get_dict_word(dict[i]);
+
+		//  this function get number from entry [i] in dictionary
+		//  example. 60: sixty
+		//			 this function gonna return "60'\0'"
 		dict_number = ft_get_dict_number(dict[i]);
+
+		//  compare 'nbr' and 'dict_number'
+		//  if it equal print 'dict_word', then free both dict_word and dic_number, then return 
 		if (ft_strcmp(nbr, dict_number) == 0)
 		{
 			ft_putstr(dict_word);
@@ -33,10 +44,15 @@ int	ft_print_figure(char *nbr, char **dict)
 			free(dict_number);
 			return (1);
 		}
+
+		//  if current number doesn't match free both dict_word and dic_number
+		//  and go to next loop, next loop gonna get word and number form next entry
 		free(dict_word);
 		free(dict_number);
 		i++;
 	}
+
+	//  return 0 after process are finished
 	return (0);
 }
 
@@ -53,12 +69,17 @@ int	ft_print_exact_value(char *nbr, char **dict)
 	while (dict[i])
 	{
 		//  this function get word from entry [i] in dictionary
-		//  example. 0: zero
-		//			 this function gonna return "zero'\0'"
+		//  example. 9: nine
+		//			 this function gonna return "nine'\0'"
 		dict_word = ft_get_dict_word(dict[i]);
 
-		
+		//  this function get number from entry [i] in dictionary
+		//  example. 60: sixty
+		//			 this function gonna return "60'\0'"
 		dict_number = ft_get_dict_number(dict[i]);
+
+		//  compare 'nbr' and 'dict_number'
+		//  if it equal print 'dict_word', then free both dict_word and dic_number, then return 
 		if (ft_strcmp(nbr, dict_number) == 0)
 		{
 			ft_putstr(dict_word);
@@ -66,9 +87,14 @@ int	ft_print_exact_value(char *nbr, char **dict)
 			free(dict_number);
 			return (1);
 		}
+
+		//  if current number doesn't match free both dict_word and dic_number
+		//  and go to next loop, next loop gonna get word and number form next entry
 		free(dict_word);
 		free(dict_number);
 		i++;
 	}
+
+	//  return 0 after process are finished
 	return (0);
 }
