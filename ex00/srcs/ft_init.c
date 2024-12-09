@@ -6,7 +6,7 @@
 /*   By: rprasopk <rprasopk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 21:02:38 by rprasopk          #+#    #+#             */
-/*   Updated: 2024/12/09 16:03:48 by rprasopk         ###   ########.fr       */
+/*   Updated: 2024/12/09 16:46:00 by rprasopk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,16 +78,29 @@ char	*ft_init_zerovalue(void)
 	char	*zerovalue;
 
 	i = 0;
+	
+	//  this function should return "000'\0'"
+	//  so it need 4 bytes of char
 	zerovalue = malloc(sizeof(char) * 4);
+	
+	//  if malloc fail, return 0
 	if (!zerovalue)
 		return (0);
+
+	//  set first index to null terminater
 	*zerovalue = 0;
+
+	//  this loop add '0' into array
 	while (i < 3)
 	{
 		zerovalue[i] = '0';
 		i++;
 	}
+
+	//  close an array with null terminater
 	zerovalue[i] = 0;
+
+	//  return array of three zero back
 	return (zerovalue);
 }
 
@@ -123,7 +136,7 @@ int	ft_start(char **dict, char **tab_nbr, int tab_nbr_size, char *zerovalue)
 			if (ft_check_next_value(tab_nbr, zerovalue, i + 1))
 				ft_putchar(',');
 		}
-		i++;
+		i++; 
 	}
 	ft_putchar('\n');
 	return (1);
@@ -147,8 +160,11 @@ int	ft_init(char *dictpath, char *nbr)
 	//  split a number string into groups of three digits, then assign it into 'tab_nbr'
 	tab_nbr = ft_split_trio_nbr(nbr, tab_nbr_size);
 
-	
+	//  function to initialize a group of three zero number string
 	zerovalue = ft_init_zerovalue();
+
+	//  if lenght of numner equal to 1 and that number is 0
+	//  (user input '0' in)
 	if (ft_strlen(nbr) == 1 && nbr[0] == '0')
 	{
 		ft_print_exact_value(nbr, dict);

@@ -6,7 +6,7 @@
 /*   By: rprasopk <rprasopk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 21:11:48 by rprasopk          #+#    #+#             */
-/*   Updated: 2024/12/08 21:12:02 by rprasopk         ###   ########.fr       */
+/*   Updated: 2024/12/09 17:24:35 by rprasopk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,12 @@ int	ft_print_exact_value(char *nbr, char **dict)
 	i = 0;
 	while (dict[i])
 	{
+		//  this function get word from entry [i] in dictionary
+		//  example. 0: zero
+		//			 this function gonna return "zero'\0'"
 		dict_word = ft_get_dict_word(dict[i]);
+
+		
 		dict_number = ft_get_dict_number(dict[i]);
 		if (ft_strcmp(nbr, dict_number) == 0)
 		{
